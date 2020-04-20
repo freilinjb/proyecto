@@ -4,6 +4,7 @@ import Sidebar from '../layout/Sidebar';
 const Proyectos = () => {
     return ( 
         <div className="contenedor-app">
+            <Sidebar/>
 
         {/* Administrar nuestras tareas */}
             <div className="seccion-principal">
