@@ -5,15 +5,15 @@ import proyectoContext from './proyectoContext';
 import proyectoReducer from './proyectoReducer';
 import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGRERGAR_PROYECTO } from '../../types';
 
-const proyectos = [
-    {id: 1,nombre: 'Tienda Virtual'},
-    {id: 2,nombre: 'Intrannet'},
-    {id: 3,nombre: 'Diesno de Sitios Web'},
-    {id: 4,nombre: 'MEARN'}
-]
-
 //Para cambiar el state del form para habilitar el formulario
 const ProyectoState = props => {
+
+    const proyectos = [
+        {id: 1,nombre: 'Tienda Virtual'},
+        {id: 2,nombre: 'Intrannet'},
+        {id: 3,nombre: 'Diesno de Sitios Web'},
+        {id: 4,nombre: 'MEARN'}
+    ]    
 
     const initialState = {
         proyectos : [],
@@ -34,7 +34,7 @@ const ProyectoState = props => {
     }
 
     //Obtener los proyectos
-    const obtenerProyectos = proyectos => {
+    const obtenerProyectos = () => {
         dispatch({
             type: OBTENER_PROYECTOS,
             payload: proyectos
@@ -47,7 +47,11 @@ const ProyectoState = props => {
     const agrergarProyecto = proyecto => {
         proyecto.id = uuidv4();
 
-        //
+        //Insertar el proyecto en el state
+        dispatch({
+            type: AGRERGAR_PROYECTO,
+            payload: proyecto
+        });
     }
 
     //Creamos el provider para importarlo en el APP
