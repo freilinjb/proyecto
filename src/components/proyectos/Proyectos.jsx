@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../layout/Sidebar';
 import Barra from '../layout/Barra';
 import FormTarea from '../tareas/FormTarea';
+import LIstadoTareas from '../tareas/LIstadoTareas';
 
 const Proyectos = () => {
     return ( 
@@ -14,7 +15,7 @@ const Proyectos = () => {
                 <main>
                     <FormTarea/>
                     <div className="contenedor-tareas">
-                        
+                        <LIstadoTareas/>
                     </div>
                 </main>
             </div>
