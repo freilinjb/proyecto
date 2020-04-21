@@ -3,7 +3,10 @@ import { v4 as uuidv4} from 'uuid';
 
 import proyectoContext from './proyectoContext';
 import proyectoReducer from './proyectoReducer';
-import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGRERGAR_PROYECTO } from '../../types';
+import { FORMULARIO_PROYECTO, 
+    OBTENER_PROYECTOS, 
+    AGRERGAR_PROYECTO,
+    VALIDAR_FORMULARIO } from '../../types';
 
 //Para cambiar el state del form para habilitar el formulario
 const ProyectoState = props => {
@@ -17,7 +20,8 @@ const ProyectoState = props => {
 
     const initialState = {
         proyectos : [],
-        formulario : false
+        formulario : false,
+        errorformulario: false
     }
 
     //Dispatch para ejecutar las acciones.
@@ -54,15 +58,24 @@ const ProyectoState = props => {
         });
     }
 
+    //Validar el formulario por errores
+    const mostrarError = () => {
+        dispatch({
+            type: VALIDAR_FORMULARIO
+        })
+    }
+
     //Creamos el provider para importarlo en el APP
     return (
         <proyectoContext.Provider 
             value={{
                 proyectos: state.proyectos,
                 formulario: state.formulario,
+                errorformulario: state.errorformulario, 
                 mostrarFormulario,
                 obtenerProyectos,
-                agrergarProyecto
+                agrergarProyecto,
+                mostrarError,
             }}
         >
             {props.children}

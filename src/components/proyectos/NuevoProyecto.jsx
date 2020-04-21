@@ -8,7 +8,7 @@ const NuevoProyecto = () => {
     // a lo largo del componente (formularioFalse)
     const proyectosContext = useContext(proyectoContext);
     //utilizar el formulario del proyectoState
-    const { formulario, mostrarFormulario, agrergarProyecto } = proyectosContext;
+    const { formulario, errorformulario, mostrarFormulario, agrergarProyecto, mostrarError } = proyectosContext;
 
 
     //State para Proyecto
@@ -34,6 +34,7 @@ const NuevoProyecto = () => {
 
         ///Validar el Proyecto
         if(nombre === '') {
+            mostrarError();
             return;
         }
 
@@ -76,8 +77,9 @@ const NuevoProyecto = () => {
                     <input type="submit" className="btn btn-primario btn-block" value="Agregar Proyecto"/>
                 </form>
             )
-            : null
-        }
+            : null }
+
+            {errorformulario ? <p className="mensaje error">El nombre del Proyecto es obligatorio</p> : null}
         </Fragment>
 
      );
