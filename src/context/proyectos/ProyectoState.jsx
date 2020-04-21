@@ -2,21 +2,22 @@ import React,{ useReducer} from 'react';
 
 import proyectoContext from './proyectoContext';
 import proyectoReducer from './proyectoReducer';
-import { FORMULARIO_PROYECTO } from '../../types';
+import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS } from '../../types';
+
+const proyectos = [
+    {id: 1,nombre: 'Tienda Virtual'},
+    {id: 2,nombre: 'Intrannet'},
+    {id: 3,nombre: 'Diesno de Sitios Web'},
+    {id: 4,nombre: 'MEARN'}
+]
 
 //Para cambiar el state del form para habilitar el formulario
 const ProyectoState = props => {
 
     const initialState = {
-        proyectos : [
-            {id: 1,nombre: 'Tienda Virtual'},
-            {id: 2,nombre: 'Intrannet'},
-            {id: 3,nombre: 'Diesno de Sitios Web'},
-            {id: 4,nombre: 'MEARN'}
-        ],
+        proyectos : [],
         formulario : false
     }
-
     //Dispatch para ejecutar las acciones.
     //useReducer es el remplazo de redux
 
@@ -30,13 +31,23 @@ const ProyectoState = props => {
         });
     }
 
+    //Obtener los proyectos
+    const obtenerProyectos = proyectos => {
+        dispatch({
+            type: OBTENER_PROYECTOS,
+            payload: proyectos
+            //El payload siempre es lo que toma de parametro 
+        });
+    }
+
     //Creamos el provider para importarlo en el APP
     return (
         <proyectoContext.Provider 
             value={{
                 proyectos: state.proyectos,
                 formulario: state.formulario,
-                mostrarFormulario
+                mostrarFormulario,
+                obtenerProyectos
             }}
         >
             {props.children}
