@@ -8,7 +8,7 @@ const NuevoProyecto = () => {
     // a lo largo del componente (formularioFalse)
     const proyectosContext = useContext(proyectoContext);
     //utilizar el formulario del proyectoState
-    const { formulario } = proyectosContext;
+    const { formulario, mostrarFormulario } = proyectosContext;
 
 
     //State para Proyecto
@@ -39,9 +39,17 @@ const NuevoProyecto = () => {
         //Reinicial el form
     }
 
+    //Mostrar el formulario nuevoProyecto
+    const onClickFormulario = () => {
+        mostrarFormulario();
+    }
+
     return ( 
         <Fragment>
-        <button className="btn btn-block btn-primario">Nuevo Proyecto</button>
+        <button 
+            className="btn btn-block btn-primario"
+            onClick={onClickFormulario}        
+            >Nuevo Proyecto</button>
 
         {
             
@@ -57,6 +65,7 @@ const NuevoProyecto = () => {
                             name="nombre"
                             value={nombre} 
                             onChange={onChangeProyecto}
+                            
                         />
                     </div>
 
