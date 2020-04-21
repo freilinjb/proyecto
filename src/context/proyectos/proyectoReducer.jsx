@@ -19,8 +19,10 @@ export default (state, action) => {
         case  AGRERGAR_PROYECTO:
             return{
                 ...state,
-                proyectos: [...state.proyectos, action.payload]
+                proyectos: [...state.proyectos, action.payload],
                 //Esto es un arreglo de objetos
+                //formulario oculta el componente NuevoPRoyecto
+                formulario:false
             }
         default:
             return state;
