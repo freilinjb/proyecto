@@ -8,7 +8,7 @@ const NuevoProyecto = () => {
     // a lo largo del componente (formularioFalse)
     const proyectosContext = useContext(proyectoContext);
     //utilizar el formulario del proyectoState
-    const { formulario, mostrarFormulario } = proyectosContext;
+    const { formulario, mostrarFormulario, agrergarProyecto } = proyectosContext;
 
 
     //State para Proyecto
@@ -33,8 +33,12 @@ const NuevoProyecto = () => {
         e.prenventDefault();
 
         ///Validar el Proyecto
+        if(nombre === '') {
+            return;
+        }
 
         //agrergar el state 
+        agrergarProyecto(proyecto);
 
         //Reinicial el form
     }

@@ -1,8 +1,9 @@
 import React,{ useReducer} from 'react';
+import { v4 as uuidv4} from 'uuid';
 
 import proyectoContext from './proyectoContext';
 import proyectoReducer from './proyectoReducer';
-import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS } from '../../types';
+import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGRERGAR_PROYECTO } from '../../types';
 
 const proyectos = [
     {id: 1,nombre: 'Tienda Virtual'},
@@ -18,6 +19,7 @@ const ProyectoState = props => {
         proyectos : [],
         formulario : false
     }
+
     //Dispatch para ejecutar las acciones.
     //useReducer es el remplazo de redux
 
@@ -40,6 +42,14 @@ const ProyectoState = props => {
         });
     }
 
+
+    //Agregar nuevo proyecto
+    const agrergarProyecto = proyecto => {
+        proyecto.id = uuidv4();
+
+        //
+    }
+
     //Creamos el provider para importarlo en el APP
     return (
         <proyectoContext.Provider 
@@ -47,7 +57,8 @@ const ProyectoState = props => {
                 proyectos: state.proyectos,
                 formulario: state.formulario,
                 mostrarFormulario,
-                obtenerProyectos
+                obtenerProyectos,
+                agrergarProyecto
             }}
         >
             {props.children}
