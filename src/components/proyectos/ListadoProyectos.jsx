@@ -1,7 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Proyecto from './Proyecto';
 import proyectoContext from '../../context/proyectos/proyectoContext';
-import ProyectoState from '../../context/proyectos/ProyectoState';
 
 const ListadoProyectos = () => { 
     

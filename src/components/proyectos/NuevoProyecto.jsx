@@ -30,7 +30,7 @@ const NuevoProyecto = () => {
 
     //Cuando el usuario envia un proyecto
     const onSubmitProyecto =e=> {
-        e.prenventDefault();
+        e.preventDefault();
 
         ///Validar el Proyecto
         if(nombre === '') {
