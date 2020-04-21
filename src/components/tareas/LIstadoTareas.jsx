@@ -22,6 +22,8 @@ const ListadoTareas = () => {
                     ))
                 }
             </ul>
+
+            <button type="button" className="btn btn-eliminar">Eliminar &times;</button>
         </Fragment>
 
      );
