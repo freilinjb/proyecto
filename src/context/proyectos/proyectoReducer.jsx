@@ -4,7 +4,8 @@ import {
     FORMULARIO_PROYECTO, 
     OBTENER_PROYECTOS, 
     AGRERGAR_PROYECTO,
-    VALIDAR_FORMULARIO } from '../../types';
+    VALIDAR_FORMULARIO,
+    PROYECTO_ACTUAL } from '../../types';
 
 //el reducer lo unico que hace es cambiar el state
 export default (state, action) => {
@@ -34,6 +35,12 @@ export default (state, action) => {
             return{
                 ...state,
                 errorformulario: true
+            }
+        case PROYECTO_ACTUAL:
+            return{
+                ...state,
+                proyecto: state.proyectos.filter(proyecto => proyecto.id === action.payload)
+                //Compara el proyecto y lo selecciona
             }
         default:
             return state;

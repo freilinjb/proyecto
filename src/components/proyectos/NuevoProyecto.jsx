@@ -33,7 +33,7 @@ const NuevoProyecto = () => {
         e.preventDefault();
 
         ///Validar el Proyecto
-        if(nombre === '') {
+        if(nombre.trim() === '') {
             mostrarError();
             return;
         }

@@ -6,7 +6,8 @@ import proyectoReducer from './proyectoReducer';
 import { FORMULARIO_PROYECTO, 
     OBTENER_PROYECTOS, 
     AGRERGAR_PROYECTO,
-    VALIDAR_FORMULARIO } from '../../types';
+    VALIDAR_FORMULARIO,
+    PROYECTO_ACTUAL } from '../../types';
 
 //Para cambiar el state del form para habilitar el formulario
 const ProyectoState = props => {
@@ -21,7 +22,8 @@ const ProyectoState = props => {
     const initialState = {
         proyectos : [],
         formulario : false,
-        errorformulario: false
+        errorformulario: false,
+        proyecto: null
     }
 
     //Dispatch para ejecutar las acciones.
@@ -65,6 +67,14 @@ const ProyectoState = props => {
         })
     }
 
+    //Selecciona el proyecto que el suario dio click
+    const proyectoActual = proyectoId => {
+        dispatch({
+            type: PROYECTO_ACTUAL,
+            payload: proyectoId
+        })
+    }
+
     //Creamos el provider para importarlo en el APP
     return (
         <proyectoContext.Provider 
@@ -72,15 +82,17 @@ const ProyectoState = props => {
                 proyectos: state.proyectos,
                 formulario: state.formulario,
                 errorformulario: state.errorformulario, 
+                proyecto: state.proyecto,
                 mostrarFormulario,
                 obtenerProyectos,
                 agrergarProyecto,
                 mostrarError,
+                proyectoActual
             }}
         >
             {props.children}
         </proyectoContext.Provider>
     )
-}
+} 
 
 export default ProyectoState;
