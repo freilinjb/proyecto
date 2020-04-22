@@ -7,7 +7,8 @@ import { FORMULARIO_PROYECTO,
     OBTENER_PROYECTOS, 
     AGRERGAR_PROYECTO,
     VALIDAR_FORMULARIO,
-    PROYECTO_ACTUAL } from '../../types';
+    PROYECTO_ACTUAL,
+    ELIMINAR_PROYECTO } from '../../types';
 
 //Para cambiar el state del form para habilitar el formulario
 const ProyectoState = props => {
@@ -75,6 +76,14 @@ const ProyectoState = props => {
         })
     }
 
+    //Elimina un proyecto
+    const eliminarProyecto = proyectoId => {
+        dispatch({
+            type: ELIMINAR_PROYECTO,
+            payload: proyectoId
+        });
+    }
+
     //Creamos el provider para importarlo en el APP
     return (
         <proyectoContext.Provider 
@@ -87,7 +96,8 @@ const ProyectoState = props => {
                 obtenerProyectos,
                 agrergarProyecto,
                 mostrarError,
-                proyectoActual
+                proyectoActual,
+                eliminarProyecto
             }}
         >
             {props.children}

@@ -5,7 +5,8 @@ import {
     OBTENER_PROYECTOS, 
     AGRERGAR_PROYECTO,
     VALIDAR_FORMULARIO,
-    PROYECTO_ACTUAL } from '../../types';
+    PROYECTO_ACTUAL,
+    ELIMINAR_PROYECTO } from '../../types';
 
 //el reducer lo unico que hace es cambiar el state
 export default (state, action) => {
@@ -41,6 +42,13 @@ export default (state, action) => {
                 ...state,
                 proyecto: state.proyectos.filter(proyecto => proyecto.id === action.payload)
                 //Compara el proyecto y lo selecciona
+            }
+
+        case ELIMINAR_PROYECTO:
+            return {
+                ...state,
+                proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload)
+                //traer los que no sean iguales al que le estas dando click
             }
         default:
             return state;
