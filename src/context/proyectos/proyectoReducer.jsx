@@ -47,8 +47,10 @@ export default (state, action) => {
         case ELIMINAR_PROYECTO:
             return {
                 ...state,
-                proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload)
                 //traer los que no sean iguales al que le estas dando click
+                proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload),
+                //resetea el listado de Taraae
+                proyecto:null
             }
         default:
             return state;
