@@ -9,7 +9,7 @@ const ListadoTareas = () => {
     //Extraer proyectos del state inicial
     const proyectosContext = useContext(proyectoContext);
     const { proyecto, eliminarProyecto } = proyectosContext;
-
+ 
     //Si no hay un proyecto seleccionado    
     if(!proyecto) return <h2>Selecciona un proyecto</h2>
 
