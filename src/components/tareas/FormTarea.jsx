@@ -13,9 +13,21 @@ const FormuTarea = () => {
     
     const [proyectoActual]= proyecto;
 
+    const onSubmit =e=> {
+        e.preventDefault();
+
+        //validar
+
+        //pasar la validacion
+
+        //agrergar la nueva tarea al state de las tareas
+
+        //reiniciar el form
+    }
+
     return ( 
         <div className="formulario">
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className="contenedor-input">
                     <input type="text" name="nombre" className="input-text" placeholder="Nombre de la Tarea..."/>
                 </div>

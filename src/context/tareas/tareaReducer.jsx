@@ -1,6 +1,7 @@
 
 import {
-    TAREAS_PROYECTO
+    TAREAS_PROYECTO,
+    AGERGAR_TAREAS
 } from '../../types';
 
 export default(state, action) => {
@@ -12,7 +13,13 @@ export default(state, action) => {
                 tareasproyecto: state.tareas.filter(tarea => tarea.proyectoId === action.payload)
                 //itere en cada tarea y cuando la tarea es igual al proyecto se agrergan al DOM y al state
             }
-        default:
+        case AGERGAR_TAREAS:
+            return{
+                ...state,
+                tareas:[...state.tareas, action.payload]
+                //agrerga la tarea al conjunto 
+            }
+        default: 
             return state;
     }
 } 
