@@ -3,9 +3,8 @@ import TareaContext from './tareaContext'
 import TareaReducer from './tareaReducer';
 
 import {
-    TAREAS_PROYECTO, PROYECTO_ACTUAL
+    TAREAS_PROYECTO, 
 } from '../../types';
-import tareaReducer from './tareaReducer';
 
 const TareaState = props => {
     const initialState = {
@@ -23,6 +22,7 @@ const TareaState = props => {
             {nombre: 'Elegir Plataformas de pago', estado: false, proyectoId: 1},
             {nombre: 'Elegir Hosting', estado: true, proyectoId: 3}
         ],
+        tareasproyecto: null //para cuando el usuario seleccione una tarea
     }
 
     //crear dispath y state
@@ -34,7 +34,7 @@ const TareaState = props => {
     const obtenerTareas = proyectoId => {
         dispatch({
             type: TAREAS_PROYECTO,
-
+            payload: proyectoId
         });
     }
 
@@ -42,6 +42,7 @@ const TareaState = props => {
         <TareaContext.Provider
             value={{
                 tareas: state.tareas,
+                tareasproyecto: state.tareasproyecto,
                 obtenerTareas
             }}>
             {props.children}
