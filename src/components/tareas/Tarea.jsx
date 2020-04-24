@@ -11,7 +11,7 @@ const Tarea = ({tarea}) => {
     //obtener la funcion del context
     const tareasContext = useContext(tareaContext);
     const {eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual} = tareasContext;
-
+ 
     //Extraer el proyecto
     const [proyectoActual] = proyecto;
 
