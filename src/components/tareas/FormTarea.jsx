@@ -11,7 +11,7 @@ const FormuTarea = () => {
     
     //obtener la funcion del context
     const tareasContext = useContext(tareaContext);
-    const {agrergarTarea} = tareasContext;
+    const {agrergarTarea, validarTarea} = tareasContext;
 
     //State del formulario
     const [tarea, guardarTarea] = useState({
@@ -39,7 +39,10 @@ const FormuTarea = () => {
         e.preventDefault();
 
         //validar
-
+        if(nombre.trim() === '') {
+            validarTarea();
+            return;
+        }
         //pasar la validacion
 
         //agrergar la nueva tarea al state de las tareas

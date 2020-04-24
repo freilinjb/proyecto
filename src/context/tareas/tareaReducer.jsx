@@ -1,7 +1,8 @@
 
 import {
     TAREAS_PROYECTO,
-    AGERGAR_TAREAS
+    AGERGAR_TAREAS,
+    VALIDAR_TAREA
 } from '../../types';
 
 export default(state, action) => {
@@ -18,6 +19,11 @@ export default(state, action) => {
                 ...state,
                 tareas:[...state.tareas, action.payload]
                 //agrerga la tarea al conjunto 
+            }
+        case VALIDAR_TAREA:
+            return{
+                ...state,
+                errortarea:true
             }
         default: 
             return state;
