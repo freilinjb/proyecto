@@ -1,17 +1,26 @@
 import React,{useContext} from 'react';
+import proyectoContext from '../../context/proyectos/proyectoContext';
 import tareaContext from '../../context/tareas/tareaContext';
 
 
 const Tarea = ({tarea}) => {
 
+    const proyectosContext = useContext(proyectoContext);
+    const { proyecto } = proyectosContext;
+
     //obtener la funcion del context
     const tareasContext = useContext(tareaContext);
-    const {eliminarTarea} = tareasContext;
+    const {eliminarTarea, obtenerTareas} = tareasContext;
+
+    //Extraer el proyecto
+    const [proyectoActual] = proyecto;
+
 
     //Funcion que se ejecuta cuando el usuario presiona btn eliminar tarea
     const tareaEliminar = id => {
         eliminarTarea(id);
-        console.log(`tareaId: ${id}`);
+        // obtenerTareas(proyecto[0].id); //Otra forma
+        obtenerTareas(proyectoActual.id);
         
     }
 
