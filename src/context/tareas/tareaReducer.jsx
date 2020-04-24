@@ -4,7 +4,8 @@ import {
     AGERGAR_TAREAS,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
-    ESTADO_TAREA
+    ESTADO_TAREA,
+    TAREA_ACTUAL
 } from '../../types';
 
 export default(state, action) => {
@@ -36,11 +37,16 @@ export default(state, action) => {
             }
 
         case ESTADO_TAREA :
-                return{
-                    ...state,
-                    tareas: state.tareasproyecto.filter(tarea => tarea.id === action.payload ? action.payload : tarea)
+            return{
+                ...state,
+                tareas: state.tareasproyecto.filter(tarea => tarea.id === action.payload ? action.payload : tarea)
+            }
+        case TAREA_ACTUAL :
+            return{
+                ...state,
+                tareaSeleccionada: action.payload
 
-                }
+            }
         default: 
             return state;
     }

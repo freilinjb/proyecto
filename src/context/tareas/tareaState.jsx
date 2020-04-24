@@ -7,7 +7,8 @@ import {
     AGERGAR_TAREAS,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
-    ESTADO_TAREA
+    ESTADO_TAREA,
+    TAREA_ACTUAL
 } from '../../types';
 
 const TareaState = props => {
@@ -27,7 +28,8 @@ const TareaState = props => {
             {id: 12, nombre: 'Elegir Hosting', estado: true, proyectoId: 3}
         ],
         tareasproyecto: null, //para cuando el usuario seleccione una tarea
-        errortarea: false
+        errortarea: false,
+        tareaSeleccionada: null
     }
 
     //crear dispath y state
@@ -73,17 +75,27 @@ const TareaState = props => {
         }); 
     }
 
+    //Extrae una tarea para edicion
+    const guardarTareaActual = tarea => {
+        dispatch({
+            type: TAREA_ACTUAL,
+            payload: tarea
+        });
+    }
+
     return (
         <TareaContext.Provider
             value={{
                 tareas: state.tareas,
                 tareasproyecto: state.tareasproyecto,
                 errortarea: state.errortarea,
+                tareaSeleccionada: state.tareaSeleccionada,
                 obtenerTareas,
                 agrergarTarea,
                 validarTarea,
                 eliminarTarea,
-                cambiarEstadoTarea
+                cambiarEstadoTarea,
+                guardarTareaActual
             }}>
             {props.children}
         </TareaContext.Provider>
