@@ -11,7 +11,7 @@ const FormuTarea = () => {
     
     //obtener la funcion del context
     const tareasContext = useContext(tareaContext);
-    const {agrergarTarea, validarTarea} = tareasContext;
+    const {errortarea ,agrergarTarea, validarTarea, obtenerTareas} = tareasContext;
 
     //State del formulario
     const [tarea, guardarTarea] = useState({
@@ -50,7 +50,13 @@ const FormuTarea = () => {
         tarea.estado = false;
         agrergarTarea(tarea);
 
+        //Obtener y filtrar las tareas del proyecto actual
+        obtenerTareas(proyectoActual.id);
+
         //reiniciar el form
+        guardarTarea({
+            nombre:'' 
+        });
     }
 
     return ( 
@@ -58,11 +64,12 @@ const FormuTarea = () => {
             <form onSubmit={onSubmit}>
                 <div className="contenedor-input">
                     <input type="text" name="nombre" value={nombre} onChange={handleChange} className="input-text" placeholder="Nombre de la Tarea..."/>
-                </div>
+                </div> 
                 <div className="contenedor-input">
                     <input type="submit" className="btn btn-primario btn-submit btn-block" value="Agrergar Tarea"/>
                 </div>
             </form>
+            {errortarea ? <p className="mensaje error">El nombrer de la tarea es obligatorio</p> : null}
         </div>
      );
 }

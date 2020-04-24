@@ -17,7 +17,9 @@ export default(state, action) => {
         case AGERGAR_TAREAS:
             return{
                 ...state,
-                tareas:[...state.tareas, action.payload]
+                tareas:[...state.tareas, action.payload],
+                errortarea: false // reseteamos el error tarea al registrar la tarea
+                
                 //agrerga la tarea al conjunto 
             }
         case VALIDAR_TAREA:
