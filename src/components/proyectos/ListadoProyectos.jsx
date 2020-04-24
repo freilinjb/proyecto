@@ -12,6 +12,7 @@ const ListadoProyectos = () => {
     //Obtener cproyectos cuando cargue el componente
     useEffect(() => {
         obtenerProyectos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
 

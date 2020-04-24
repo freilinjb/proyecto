@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useState} from 'react';
+import React, {Fragment, useContext} from 'react';
 import Tarea from '../tareas/Tarea';
 
 import proyectoContext from '../../context/proyectos/proyectoContext';
@@ -39,7 +39,7 @@ const ListadoTareas = () => {
                     {tareasproyecto.map(tarea => (
                         <CSSTransition
                             key={tarea.id}
-                            timeout={400}
+                            timeout={200}
                             classNames="tarea"
                         >
                             <Tarea 
