@@ -10,7 +10,7 @@ const Tarea = ({tarea}) => {
 
     //obtener la funcion del context
     const tareasContext = useContext(tareaContext);
-    const {eliminarTarea, obtenerTareas} = tareasContext;
+    const {eliminarTarea, obtenerTareas, cambiarEstadoTarea} = tareasContext;
 
     //Extraer el proyecto
     const [proyectoActual] = proyecto;
@@ -24,6 +24,18 @@ const Tarea = ({tarea}) => {
         
     }
 
+    //Funcion que modifica el estado de las tareas
+    const cambiarEstado =tarea => {
+        // if(tarea.estado) {
+        //     tarea.estado = false;
+        // } else {
+        //     tarea.estado = true;
+        // }
+
+        tarea.estado = (tarea.estado) ? false : true;
+        cambiarEstadoTarea(tarea);
+    }
+
     return ( 
         <li className="tarea sombra">
             <p>{tarea.nombre}</p>
@@ -32,11 +44,11 @@ const Tarea = ({tarea}) => {
                 { tarea.estado 
                 ?
                     (
-                        <button type="button" className="completo">Completo</button>
+                        <button type="button" className="completo" onClick={()=> cambiarEstado(tarea)}>Completo</button>
                     )
                 :    
                     (
-                        <button type="button" className="incompleto">Incompleto</button>
+                        <button type="button" className="incompleto" onClick={()=> cambiarEstado(tarea)}>Incompleto</button>
                     )
                 }
             </div>
